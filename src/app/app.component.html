@@ -7,11 +7,12 @@
 
   <!-- <app-form></app-form> -->
   <div *ngIf="toggle; else noCards">
-    <app-card></app-card>
-    <app-card></app-card>
-    <app-card></app-card>
+    <app-card
+      *ngFor="let iterCard of cards"
+      [card]="iterCard"
+    ></app-card>
   </div>
-
+    
   <ng-template #noCards>
     <p>Cards are hidden!</p>
   </ng-template>
