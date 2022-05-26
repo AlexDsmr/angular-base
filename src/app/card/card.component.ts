@@ -16,12 +16,12 @@ export class CardComponent implements OnInit {
 
     title = 'My Card Title'
     text = 'My sample text'
-    inputValue = ''
-    textColor: string | undefined
 
-    ngOnInit() {
+    cardDate: Date = new Date()
 
-    }
+    textColor!: string 
+
+    ngOnInit() {}
 
     changeTitle() {
         this.card.title = 'Title has been changed'
