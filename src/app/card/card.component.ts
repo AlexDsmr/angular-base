@@ -13,9 +13,9 @@ export class CardComponent {
     title = 'My Card Title'
     text = 'My sample text'
 
-    number = 42
+    imgUrl: string = 'https://cdn.iconscout.com/icon/free/png-128/angular-2752246-2285063.png'
 
-    array = [1, 1, 2, 3, 5, 8, 13]
-
-    obj = {'name': 'Alex', 'info':{'age': 28, 'job': 'frontend'}}
+    getInfo() {
+        return 'This is my info'
+    }
 }

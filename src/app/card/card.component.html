@@ -1,7 +1,9 @@
 <div class="card">
     <h2>{{ title }}</h2>
     <p>{{ text }}</p>
-    <p>Number: {{ number }}</p>
-    <p>Array: {{ array }}</p> 
-    <pre>Object: {{ obj | json}}</pre>
+    <p>{{ getInfo() }}</p>
+
+    <div>
+        <img src="{{ imgUrl }}">
+    </div>
 </div>
