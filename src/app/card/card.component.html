@@ -2,8 +2,12 @@
     <h2>{{ title }}</h2>
     <p>{{ text }}</p>
 
-    <div>
+    <div class="buttons">
         <button (click)="changeTitle()">Change title</button>
         <button (click)="title ='Inline title'">Change Inline Title</button>
+    </div>
+
+    <div>
+        <input type="text" (input)="inputHandler($event)" [value]="title">
     </div>
 </div>

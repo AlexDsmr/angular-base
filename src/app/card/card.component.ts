@@ -12,6 +12,7 @@ export class CardComponent implements OnInit {
 
     title = 'My Card Title'
     text = 'My sample text'
+    inputValue = ''
 
     ngOnInit() {
 
@@ -19,5 +20,10 @@ export class CardComponent implements OnInit {
 
     changeTitle() {
         this.title = 'Title has been changed'
+    }
+
+    inputHandler(event: any) {
+        const value = event.target.value
+        this.title = value
     }
 }
