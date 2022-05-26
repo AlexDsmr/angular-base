@@ -8,6 +8,6 @@
     </div>
 
     <div>
-        <input type="text" (input)="inputHandler($event)" [value]="title">
+        <input type="text" #myInput (input)="inputHandler(myInput.value)" [value]="title">
     </div>
 </div>
