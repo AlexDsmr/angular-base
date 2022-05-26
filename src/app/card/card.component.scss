@@ -10,4 +10,18 @@
     .buttons {
         margin-bottom: .5rem;
     }
+
+    .text {
+        &.red {
+            color: red;
+        }
+
+        &.blue {
+            color:blue;
+        }
+
+        &.green {
+            color:green;
+        }
+    }
 }
