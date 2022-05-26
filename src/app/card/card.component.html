@@ -1,10 +1,9 @@
 <div class="card">
     <h2>{{ title }}</h2>
     <p>{{ text }}</p>
-    <p>{{ getInfo() }}</p>
 
     <div>
-        <img [src]="imgUrl">
+        <button (click)="changeTitle()">Change title</button>
+        <button (click)="title ='Inline title'">Change Inline Title</button>
     </div>
-    <button [disabled]="isDisabled">Click me</button>
 </div>
