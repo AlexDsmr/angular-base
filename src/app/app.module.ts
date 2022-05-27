@@ -12,6 +12,7 @@ import { CardListComponent } from './cards-block/card-list/card-list.component';
 import { CalendarComponent } from './diary/calendar/calendar.component';
 import { SelectorComponent } from './diary/selector/selector.component';
 import { OrganizerComponent } from './diary/organizer/organizer.component';
+import { DiaryMainComponent } from './diary-main/diary-main.component';
 
 registerLocaleData(localeRu, 'ru')
 
@@ -23,7 +24,8 @@ registerLocaleData(localeRu, 'ru')
     CardListComponent,
     CalendarComponent,
     SelectorComponent,
-    OrganizerComponent
+    OrganizerComponent,
+    DiaryMainComponent
   ],
   imports: [
     BrowserModule,
