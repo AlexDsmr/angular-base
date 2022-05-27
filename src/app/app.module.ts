@@ -13,6 +13,7 @@ import { CalendarComponent } from './diary/calendar/calendar.component';
 import { SelectorComponent } from './diary/selector/selector.component';
 import { OrganizerComponent } from './diary/organizer/organizer.component';
 import { DiaryMainComponent } from './diary/diary-main/diary-main.component';
+import { MomentPipe } from './shared/moment.pipe';
 
 registerLocaleData(localeRu, 'ru')
 
@@ -25,7 +26,8 @@ registerLocaleData(localeRu, 'ru')
     CalendarComponent,
     SelectorComponent,
     OrganizerComponent,
-    DiaryMainComponent
+    DiaryMainComponent,
+    MomentPipe
   ],
   imports: [
     BrowserModule,
