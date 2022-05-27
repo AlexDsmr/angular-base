@@ -10,41 +10,11 @@
     --light-color: #f4f4f4;
 }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    background: #fff;
-}
-
 .container {
     max-width: 1100px;
     margin: auto;
     overflow: hidden;
     padding: 0 2rem;
-}
-
-a {
-    color: var(--primary-color);
-    text-decoration: none;
-
-    &:hover {
-        color: #666;
-    }
-}
-
-ul {
-    list-style: none;
-}
-
-input {
-    display: block;
-    width: 100%;
-    padding: .4rem;
-    font-size: 1.2rem;
-    border: 1px solid #ccc;
-    outline: none;
-    margin-bottom: .5rem;
 }
 
 h1 {

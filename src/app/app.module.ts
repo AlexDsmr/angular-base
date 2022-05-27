@@ -33,6 +33,7 @@ registerLocaleData(localeRu, 'ru')
     RouterModule.forRoot([
       {path: 'cards', component: CardListComponent},
       {path: 'form', component: FormComponent},
+      {path: 'diary', component: DiaryMainComponent}
     ]),
   ],
   providers: [],
