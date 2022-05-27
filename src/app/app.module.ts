@@ -6,9 +6,12 @@ import localeRu from '@angular/common/locales/ru';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { CardComponent } from './card/card.component';
+import { CardComponent } from './cards-block/card/card.component';
 import { FormComponent } from './form/form.component';
-import { CardListComponent } from './card-list/card-list.component';
+import { CardListComponent } from './cards-block/card-list/card-list.component';
+import { CalendarComponent } from './diary/calendar/calendar.component';
+import { SelectorComponent } from './diary/selector/selector.component';
+import { OrganizerComponent } from './diary/organizer/organizer.component';
 
 registerLocaleData(localeRu, 'ru')
 
@@ -17,7 +20,10 @@ registerLocaleData(localeRu, 'ru')
     AppComponent,
     CardComponent,
     FormComponent,
-    CardListComponent
+    CardListComponent,
+    CalendarComponent,
+    SelectorComponent,
+    OrganizerComponent
   ],
   imports: [
     BrowserModule,
