@@ -22,11 +22,10 @@ registerLocaleData(localeRu, 'ru')
   imports: [
     BrowserModule,
     FormsModule,
-    /* RouterModule.forRoot([
-      {path: '/', component: CardComponent},
-      {path: 'form', component: FormsModule,
-    },
-    ]), */
+    RouterModule.forRoot([
+      {path: 'cards', component: CardListComponent},
+      {path: 'form', component: FormComponent},
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]
