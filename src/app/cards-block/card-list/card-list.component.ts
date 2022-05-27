@@ -10,6 +10,7 @@ export interface Card {
   templateUrl: './card-list.component.html',
   styleUrls: ['./card-list.component.scss']
 })
+
 export class CardListComponent implements OnInit {
 
   toggle = true
