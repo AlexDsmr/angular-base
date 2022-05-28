@@ -1,4 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
+import { DateService } from 'src/app/shared/date.service';
+
+interface Day {
+  value: moment.Moment
+  active: boolean
+  disabled: boolean
+  selected: boolean
+}
+
+interface Week {
+  days: Day[]
+}
 
 @Component({
   selector: 'app-calendar',
@@ -6,10 +19,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
+  
+  calendar!: Week[];
 
-  constructor() { }
+  constructor(private dateService: DateService) { }
 
   ngOnInit(): void {
+    this.dateService.date.subscribe(this.generate.bind(this))
+  }
+  
+  generate(now: moment.Moment) {
+    console.log(now.format());
   }
 
 }
