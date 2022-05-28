@@ -5,6 +5,12 @@ body {
     background: #fff;
 }
 
+:root {
+    --primary-color: #dc3545;
+    --dark-color: #33333;
+    --light-color: #f4f4f4;
+}
+
 a {
     color: var(--primary-color);
     text-decoration: none;

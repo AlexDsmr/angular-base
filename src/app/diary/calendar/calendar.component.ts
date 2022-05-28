@@ -44,8 +44,7 @@ export class CalendarComponent implements OnInit {
             const value = date.add(1, 'day').clone()
             const active = moment().isSame(value, 'date')
             const disabled = !now.isSame(value, 'month')
-            
-            const selected = active?now.isSame(value, 'date'):false
+            const selected = now.isSame(value, 'date')
             
 
             return {
@@ -56,6 +55,10 @@ export class CalendarComponent implements OnInit {
     }
 
     this.calendar = calendar
+  }
+
+  select(day: moment.Moment) {
+    this.dateService.changeDate(day)
   }
 
 }
