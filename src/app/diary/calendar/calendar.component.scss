@@ -1,13 +1,11 @@
-:root {
-    --primary-color: #dc3545;
-    --dark-color: #33333;
-    --light-color: #f4f4f4;
-}
-
 table {
     width: 100%;
     margin-bottom: 1rem;
     border-collapse: collapse;
+
+    thead {
+        background-color: var(--light-color);
+    }
 
     td, th {
         border: 1px solid #000;
