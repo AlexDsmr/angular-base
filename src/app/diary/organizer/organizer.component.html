@@ -18,9 +18,9 @@
     </main>
 
     <footer>
-        <form>
+        <form (ngSubmit)="submit()" [formGroup]="form">
             <div style="display: flex;">
-                <input type="text">
+                <input type="text" formControlName="title">
             </div>
             <button
                 type="submit"
