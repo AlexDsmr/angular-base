@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { switchMap } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { DateService } from 'src/app/shared/date.service';
 import { Task, TasksService } from 'src/app/shared/task.service';
 
@@ -44,7 +44,9 @@ submit() {
 }
 
 remove(task: Task) {
-
+  this.tasksService.remove(task).subscribe(() => {
+    this.tasks = this.tasks.filter(t => t.id !== task.id)
+  }, err => console.error(err))
 }
 
 }
