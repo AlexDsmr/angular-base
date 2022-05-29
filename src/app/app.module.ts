@@ -15,6 +15,7 @@ import { OrganizerComponent } from './diary/organizer/organizer.component';
 import { DiaryMainComponent } from './diary/diary-main/diary-main.component';
 import { MomentPipe } from './shared/moment.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 registerLocaleData(localeRu, 'ru')
 
@@ -28,7 +29,8 @@ registerLocaleData(localeRu, 'ru')
     SelectorComponent,
     OrganizerComponent,
     DiaryMainComponent,
-    MomentPipe
+    MomentPipe,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
