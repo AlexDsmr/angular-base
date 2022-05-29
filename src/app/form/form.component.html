@@ -1,3 +1,9 @@
-<form>
-    <input type="text">
-</form>
+<div class="container">
+    <form>
+        <label for="name">Name: </label>
+        <input id="name" type="text" [formControl]="name">
+        <p>Value: {{ name.value }}</p>
+        <button type="button" (click)="updateName()">Update to Nancy</button>
+    </form>
+    
+</div>
