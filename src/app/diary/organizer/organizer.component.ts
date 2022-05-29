@@ -43,5 +43,8 @@ submit() {
   }, err => console.error(err))
 }
 
+remove(task: Task) {
+  
+}
 
 }
