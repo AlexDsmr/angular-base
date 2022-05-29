@@ -9,6 +9,10 @@ export interface Task {
     date?: string
 }
 
+interface CreateResponse {
+    name: string
+}
+
 @Injectable({providedIn: 'root'})
 export class TasksService {
     static url = 'https://angular-practice-diary-default-rtdb.europe-west1.firebasedatabase.app/tasks'
@@ -18,10 +22,10 @@ export class TasksService {
 
     create(task: Task): Observable<Task> {
         return this.http
-            .post<any>(`${TasksService.url}/${task.date}.json`, task)
+            .post<CreateResponse>(`${TasksService.url}/${task.date}.json`, task)
             .pipe(map(res => {
                 console.log('Response:', res)
-                return res
+                return {...task, id: res.name}
             }))
     }
 }

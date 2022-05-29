@@ -30,6 +30,7 @@ submit() {
   }
   
   this.tasksService.create(task).subscribe(task => {
+    console.log('New task', task);
     this.form.reset()
   }, err => console.error(err))
 
