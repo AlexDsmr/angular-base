@@ -12,12 +12,17 @@ export class FormComponent {
   updateName() {
     this.name.setValue('Nancy');
   }
-  
+
 ///////////////////////
 
 profileForm = new FormGroup({
   firstName: new FormControl(''),
   lastName: new FormControl(''),
 });
+
+onSubmit() {
+  // TODO: Use EventEmitter with form value
+  console.warn(this.profileForm.value);
+}
 
 }
