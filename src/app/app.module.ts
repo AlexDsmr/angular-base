@@ -14,6 +14,7 @@ import { SelectorComponent } from './diary/selector/selector.component';
 import { OrganizerComponent } from './diary/organizer/organizer.component';
 import { DiaryMainComponent } from './diary/diary-main/diary-main.component';
 import { MomentPipe } from './shared/moment.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localeRu, 'ru')
 
@@ -33,6 +34,7 @@ registerLocaleData(localeRu, 'ru')
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {path: 'cards', component: CardListComponent},
       {path: 'form', component: FormComponent},
