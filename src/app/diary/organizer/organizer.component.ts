@@ -38,13 +38,13 @@ submit() {
   }
   
   this.tasksService.create(task).subscribe(task => {
-    console.log('New task', task);
+    this.tasks.push(task)
     this.form.reset()
   }, err => console.error(err))
 }
 
 remove(task: Task) {
-  
+
 }
 
 }
