@@ -5,10 +5,21 @@
     padding: 0 1rem;
 
     input {
-        margin: 0 0.2rem;
+        margin: 0.4rem;
+        display: inline-block
     }
 
     label {
-        margin-right: 0.2rem;
+        margin-right: 0.4rem;
+        
     }
+
+    
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    
+    
 }
