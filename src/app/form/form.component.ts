@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup, Validators, FormBuilder, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms';
 
 
@@ -24,25 +25,6 @@ ngOnInit(): void {
     this.changeEquip(location)
   });
 
-  this.profileForm = new FormGroup({
-    name: new FormControl(this.profileForm.value.name, [
-      Validators.required,      
-    ]),
-    location: new FormControl(this.profileForm.value.location, [
-      Validators.required,      
-    ]),
-  
-    mail: new FormControl(this.profileForm.value.contact.mail, [
-      Validators.required,
-      allowedNameValidator(/.+@.+\..+/i)
-    ]),
-    phone: new FormControl(this.profileForm.value.contact.phone, [
-      Validators.required,
-      allowedNameValidator(/^([+]?[0-9\s-\(\)]{3,25})*$/i)
-    ]),
-  })
-
-
 }
 
 changeEquip(location: string) {
@@ -59,15 +41,16 @@ locations = ['Russia', 'Europe', 'Asia', 'America', "Other"]
 superPowers = ['Super Speed', 'Levitation', 'Accelerated Healing', 'Gravity Control','Elasticity (Stretchy)']
 
 profileForm = this.fb.group({
-  name: [''], 
+  name: ['', Validators.required], 
   alias: [''],
-  location: [''],
+  location: ['', Validators.required],
   equipment: [''],
-  superPower: [''],
-  contact: this.fb.group({
-    phone: [''],
-    mail: [''],
-  })
+  superPower: ['', Validators.required],
+  phone: ['', [Validators.required,
+    allowedNameValidator(/^([+]?[0-9\s-\(\)]{3,25})*$/i)]],
+  mail: ['', [Validators.required,
+    allowedNameValidator(/.+@.+\..+/i)]]
+  
 });
 
 
