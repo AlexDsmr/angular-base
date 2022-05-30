@@ -8,11 +8,14 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 })
 export class FormComponent {
 
-  constructor(private fb: FormBuilder) { }
+constructor(private fb: FormBuilder) { }
+
+locations = ['Russia', 'Europe', 'Asia', 'America']
 
 profileForm = this.fb.group({
   name: [''],
   alias: [''],
+  location: [null],
   equipment: [''],
   superPower: [''],
   contact: this.fb.group({

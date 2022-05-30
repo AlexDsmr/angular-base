@@ -11,10 +11,12 @@
         <input id="alias" type="text" formControlName="alias">
 
         <label for="location">Your location: </label>
-        <select id="location">
-            <option>Пункт 1</option>
-            <option>Пункт 2</option>
+        <select formControlName="location">
+            <option *ngFor="let location of locations" [value]="location">{{ location }}</option>
         </select>
+        <div [hidden]="profileForm.get('location')?.valid || profileForm.get('location')?.pristine" class="alert alert-danger">
+            Power is required
+          </div>
 
         <label for="equipment">Your base equipment: </label>
         <p id="equipment">asdasda</p>
