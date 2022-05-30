@@ -28,6 +28,7 @@ changeEquip(location: string) {
 }
 
 locations = ['Russia', 'Europe', 'Asia', 'America', "Other"]
+superPowers = ['Super Speed', 'Levitation', 'Accelerated Healing', 'Gravity Control','Elasticity (Stretchy)']
 
 profileForm = this.fb.group({
   name: [''],
