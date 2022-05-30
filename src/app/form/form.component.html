@@ -1,41 +1,40 @@
 <div class="container">
-    <form>
-        <label for="name">Name: </label>
-        <input id="name" type="text" [formControl]="name">
-        <p>Value: {{ name.value }}</p>
-        <button type="button" (click)="updateName()">Update to Nancy</button>
-    </form>
-    <hr>
     <form
+        class="form-group"
         [formGroup]="profileForm"
         (ngSubmit)="onSubmit()"
     >
-        <label for="first-name">First Name: </label>
-        <input id="first-name" type="text" formControlName="firstName">
+        <label for="name">Your name: </label>
+        <input id="name" type="text" formControlName="name">
 
-        <div>
-            <label for="last-name">Last Name: </label>
-            <input id="last-name" type="text" formControlName="lastName">
-        </div>
-        
-        <div class="form-group" formGroupName="address">
-            <h3>Address</h3>
+        <label for="alias">Your alias: </label>
+        <input id="alias" type="text" formControlName="alias">
+
+        <label for="location">Your location: </label>
+        <select id="location">
+            <option>Пункт 1</option>
+            <option>Пункт 2</option>
+        </select>
+
+        <label for="equipment">Your base equipment: </label>
+        <p id="equipment">asdasda</p>
+
+        <label for="superPower">Your super power: </label>
+        <input id="superPower" type="text" formControlName="superPower">
+
+        <div class="form-group" formGroupName="contact">
+            <h3>Contact</h3>
             
-            <label for="street">Street: </label>
-            <input id="street" type="text" formControlName="street">
+            <label for="mail">Email: </label>
+            <input id="mail" type="text" formControlName="mail">
             
-            <label for="city">City: </label>
-            <input id="city" type="text" formControlName="city">
-            
-            <label for="state">State: </label>
-            <input id="state" type="text" formControlName="state">
-            
-            <label for="zip">Zip Code: </label>
-            <input id="zip" type="text" formControlName="zip">
+            <label for="phone">Phone number: </label>
+            <input id="phone" type="text" formControlName="phone">
+
         </div>
 
-        <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+        <button class="btn " type="submit" [disabled]="!profileForm.valid">Submit</button>
     </form>
-    <hr>
+    
         
 </div>

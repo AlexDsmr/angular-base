@@ -4,9 +4,17 @@
     overflow: hidden;
     padding: 0 1rem;
 
-    input {
+    input, select {
         margin: 0.4rem;
-        display: inline-block
+        display: inline-block;
+        flex: 1;
+        
+        padding: .4rem;
+        font-size: 1.2rem;
+        border: 1px solid rgb(102, 102, 102);
+        
+        margin-bottom: .5rem;
+        
     }
 
     label {
@@ -22,4 +30,28 @@
     flex-direction: column;
     
     
+}
+
+.btn {
+    display: (inline-block);
+    background: var(--light-color);
+    color: #333;
+    padding: .4rem 1.3rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    margin-right: .5rem;
+    transition: opacity .2s;
+    outline: none;
+    
+
+    &:disabled {
+        background: var(--dark-color);
+        color: #fff;
+        cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+        opacity: .8;
+    }
 }

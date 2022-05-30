@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -7,22 +7,17 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./form.component.scss']
 })
 export class FormComponent {
-  name = new FormControl('');
 
-  updateName() {
-    this.name.setValue('Nancy');
-  }
+  constructor(private fb: FormBuilder) { }
 
-///////////////////////
-
-profileForm = new FormGroup({
-  firstName: new FormControl(''),
-  lastName: new FormControl(''),
-  address: new FormGroup({
-    street: new FormControl(''),
-    city: new FormControl(''),
-    state: new FormControl(''),
-    zip: new FormControl('')
+profileForm = this.fb.group({
+  name: [''],
+  alias: [''],
+  equipment: [''],
+  superPower: [''],
+  contact: this.fb.group({
+    phone: [''],
+    mail: [''],
   })
 });
 
@@ -30,9 +25,5 @@ onSubmit() {
   // TODO: Use EventEmitter with form value
   console.warn(this.profileForm.value);
 }
-
-/////////////
-  
-
 
 }
