@@ -5,13 +5,13 @@
         (ngSubmit)="onSubmit()"
     >
         <label for="name">Your name: </label>
-        <input id="name" type="text" formControlName="name" autocomplete="off">
+        <input id="name" type="text" formControlName="name" autocomplete="off" >
 
         <label for="alias">Your alias: </label>
-        <input id="alias" type="text" formControlName="alias" autocomplete="off">
+        <input id="alias" type="text"  autocomplete="off">
 
         <label for="location">Your location: </label>
-        <select formControlName="location" autocomplete="off">
+        <select autocomplete="off" formControlName="location">
             <option label="--select your location--"></option>
             <option *ngFor="let location of locations" [value]="location" >{{ location }}</option>
         </select>
@@ -20,12 +20,12 @@
         <p id="equipment">{{ profileForm.get('equipment')?.value }}</p>
 
         <label for="superPower">Your super power: </label>
-        <input list="superPower" type="text" formControlName="superPower" autocomplete="off"/>
+        <input list="superPower" type="text" autocomplete="off" />
         <datalist id="superPower" > 
             <option *ngFor="let superPower of superPowers" [value]="superPower" >{{ superPower }}</option>
         </datalist>
 
-        <div class="form-group" formGroupName="contact">
+        <div class="form-group">
             <h3>Contact</h3>
             
             <label for="mail">Email: </label>
