@@ -40,7 +40,7 @@ export class HeroService {
 
     create(hero: Hero): Observable<Hero> {
         return this.http
-            .post<CreateResponse>(`${HeroService.url}/${hero.date}.json`, hero)
+            .post<CreateResponse>(`${HeroService.url}.json`, hero)
             .pipe(map(res => {
                 return {...hero, id: res.name}
             }))
@@ -48,6 +48,6 @@ export class HeroService {
 
     remove(hero: Hero): Observable<void> {
         return this.http
-          .delete<void>(`${HeroService.url}/${hero.date}/${hero.id}.json`)
+          .delete<void>(`${HeroService.url}/${hero.id}.json`)
       }
 }

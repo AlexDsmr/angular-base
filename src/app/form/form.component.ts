@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
-import { FormControl, FormGroup, Validators, FormBuilder, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms';
+import { Validators, FormBuilder, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms';
+import { Hero, HeroService } from 'src/app/shared/hero.service';
+import { DateService } from 'src/app/shared/date.service';
 
 
 export function allowedNameValidator(nameRe: RegExp): ValidatorFn {
@@ -18,7 +19,11 @@ export function allowedNameValidator(nameRe: RegExp): ValidatorFn {
 
 export class FormComponent implements OnInit{
 
-constructor(private fb: FormBuilder) { }
+heroes: Hero[] = []
+
+constructor(private fb: FormBuilder,
+            public dateService: DateService,
+            private heroService: HeroService) { }
 ngOnInit(): void {
   this.profileForm.get('location')?.valueChanges.subscribe((location) => {
     this.changeEquip(location)
@@ -112,11 +117,30 @@ profileForm = this.fb.group({
 
 
 onSubmit() {
-  // TODO: Use EventEmitter with form value
+  const hero: Hero = {
+    name: this.profileForm.get('name')?.value,
+    date: this.dateService.date.value.format('DD-MM-YYYY'),
+    alias: this.profileForm.get('alias')?.value,
+    location: this.profileForm.get('location')?.value,
+    equipment: this.profileForm.get('equipment')?.value,
+    superPower: this.profileForm.get('superPower')?.value,
+    mail: this.profileForm.get('mail')?.value,
+    phone: this.profileForm.get('phone')?.value
+  }
   
-  console.log(this.profileForm.value);
+  this.heroService.create(hero).subscribe(hero => {
+    this.heroes.push(hero)
+    this.profileForm.reset()
+  }, err => console.error(err))
 }
 
+//remove(task: Task) {
+//  this.tasksService.remove(task).subscribe(() => {
+//    this.tasks = this.tasks.filter(t => t.id !== task.id)
+//  }, err => console.error(err))
+//
+//  console.log(this.profileForm.value);
+//}
 
 
 }
