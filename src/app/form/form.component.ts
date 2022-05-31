@@ -21,7 +21,6 @@ export class FormComponent implements OnInit{
 constructor(private fb: FormBuilder) { }
 ngOnInit(): void {
   this.profileForm.get('location')?.valueChanges.subscribe((location) => {
-    console.log(location)
     this.changeEquip(location)
   });
 
@@ -42,32 +41,57 @@ superPowers = ['Super Speed', 'Levitation', 'Accelerated Healing', 'Gravity Cont
 isReqMail = true
 isReqPhone = true
 
+
+
 phoneHandler(){
-  this.profileForm.get('phone')?.value?
-    this.profileForm.get('phone')?.setValidators([Validators.required, allowedNameValidator(/^([+]?[0-9\s-\(\)]{3,25})*$/i)]):undefined
-  
-  this.profileForm.get('phone')?.status === "VALID"?
-    this.profileForm.get('mail')?.clearValidators():
+  if(!this.profileForm.get('mail')?.value && this.profileForm.get('phone')?.value) {
+    this.isReqMail = true
+    this.isReqPhone = true
+  }  
+
+  if (this.profileForm.get('phone')?.value) {
+    this.profileForm.get('phone')?.setValidators([Validators.required, allowedNameValidator(/^([+]?[0-9\s-\(\)]{3,25})*$/i)])
+    this.isReqPhone = true
+  }
+
+  if (this.profileForm.get('phone')?.status === "VALID" && !this.profileForm.get('mail')?.value){
+    this.profileForm.get('mail')?.clearValidators()
+    this.isReqMail = false
+  } else {
     this.profileForm.get('mail')?.setValidators([Validators.required, allowedNameValidator(/.+@.+\..+/i)])
+    this.isReqMail = true
+  }
 
     if(this.profileForm.get('mail')?.status === "VALID" && !this.profileForm.get('phone')?.value) {
       this.profileForm.get('phone')?.clearValidators()
+      this.isReqPhone = false
     }
 
   this.profileForm.get('mail')?.updateValueAndValidity()
   this.profileForm.get('phone')?.updateValueAndValidity()
 }
 
-mailHandler(){  
-  this.profileForm.get('mail')?.value?
-    this.profileForm.get('mail')?.setValidators([Validators.required, allowedNameValidator(/.+@.+\..+/i)]):undefined
-  
-    this.profileForm.get('mail')?.status === "VALID"?
-      this.profileForm.get('phone')?.clearValidators():
-      this.profileForm.get('phone')?.setValidators([Validators.required, allowedNameValidator(/^([+]?[0-9\s-\(\)]{3,25})*$/i)])
-    
+mailHandler(){
+  if(!this.profileForm.get('mail')?.value && this.profileForm.get('phone')?.value) {
+    this.isReqMail = true
+    this.isReqPhone = true
+  }  
+
+  if (this.profileForm.get('mail')?.value) {
+    this.profileForm.get('mail')?.setValidators([Validators.required, allowedNameValidator(/.+@.+\..+/i)])
+    this.isReqMail = true
+  }
+
+  if(this.profileForm.get('mail')?.status === "VALID" && !this.profileForm.get('phone')?.value) {
+    this.profileForm.get('phone')?.clearValidators()
+    this.isReqPhone = false
+  } else {
+    this.profileForm.get('phone')?.setValidators([Validators.required, allowedNameValidator(/^([+]?[0-9\s-\(\)]{3,25})*$/i)])
+    this.isReqPhone = true
+  }
     if(this.profileForm.get('phone')?.status === "VALID" && !this.profileForm.get('mail')?.value) {
       this.profileForm.get('mail')?.clearValidators()
+      this.isReqMail = false
     }
 
     this.profileForm.get('mail')?.updateValueAndValidity()
@@ -76,12 +100,12 @@ mailHandler(){
 
 profileForm = this.fb.group({
   name: ['', Validators.required], 
-  alias: [''],
+  alias: [null],
   location: ['', Validators.required],
   equipment: [''],
   superPower: ['', Validators.required],
-  mail: ['', [Validators.required, allowedNameValidator(/.+@.+\..+/i)]],
-  phone: ['', [Validators.required, allowedNameValidator(/^([+]?[0-9\s-\(\)]{3,25})*$/i)]]
+  mail: [null, [Validators.required, allowedNameValidator(/.+@.+\..+/i)]],
+  phone: [null, [Validators.required, allowedNameValidator(/^([+]?[0-9\s-\(\)]{3,25})*$/i)]]
 });
 
 

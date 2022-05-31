@@ -8,7 +8,7 @@
         <input id="name" type="text" formControlName="name" autocomplete="off" >
 
         <label for="alias">Alias: </label>
-        <input id="alias"style="border: 1px solid rgb(102, 102, 102)" type="text"  autocomplete="off" formControlName="alias">
+        <input id="alias" style="border: 1px solid rgb(102, 102, 102)" type="text"  autocomplete="off" formControlName="alias">
 
         <label for="location">Location: </label>
         <select autocomplete="off" formControlName="location">
@@ -34,7 +34,7 @@
                 type="mail"
                 formControlName="mail"
                 autocomplete="off"
-                
+                [class.notRequire]="isReqMail === false"
                 #mailInput
                 (input)="mailHandler()"
             >
@@ -45,7 +45,7 @@
                 type="number"
                 formControlName="phone"
                 autocomplete="off"
-                
+                [class.notRequire]="isReqPhone === false"
                 #phoneInput
                 (input)="phoneHandler()"
                 >
