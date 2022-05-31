@@ -27,16 +27,16 @@ export class HeroService {
     constructor(private http: HttpClient) {
     }
 
-    //load(date: moment.Moment): Observable<Task[]> {
-    //    return this.http
-    //        .get<Task[]> ( `${TasksService.url}/${date.format('DD-MM-YYYY')}.json`)
-    //        .pipe(map(tasks => {
-    //            if (!tasks) {
-    //                return []
-    //            }
-    //            return Object.keys(tasks).map((key: any) => ({...tasks[key], id: key}))
-    //        }))
-    //}
+    load(): Observable<Hero[]> {
+        return this.http
+            .get<Hero[]> ( `${HeroService.url}.json`)
+            .pipe(map(heroes => {
+                if (!heroes) {
+                    return []
+                }
+                return Object.keys(heroes).map((key: any) => ({...heroes[key], id: key}))
+            }))
+    }
 
     create(hero: Hero): Observable<Hero> {
         return this.http

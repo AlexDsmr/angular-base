@@ -29,6 +29,10 @@ ngOnInit(): void {
     this.changeEquip(location)
   });
 
+  this.heroService.load()
+  .subscribe(heroes => {
+    this.heroes = heroes
+  })
 }
 
 changeEquip(location: string) {
