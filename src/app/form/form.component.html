@@ -29,10 +29,26 @@
             <h3>Contact</h3>
             
             <label for="mail">Email: </label>
-            <input id="mail" type="mail" formControlName="mail" autocomplete="off">
+            <input
+                id="mail"
+                type="mail"
+                formControlName="mail"
+                autocomplete="off"
+                
+                #mailInput
+                (input)="mailHandler()"
+            >
             
             <label for="phone">Phone number: </label>
-            <input id="phone" type="number" formControlName="phone" autocomplete="off">
+            <input
+                id="phone"
+                type="number"
+                formControlName="phone"
+                autocomplete="off"
+                
+                #phoneInput
+                (input)="phoneHandler()"
+                >
 
         </div>
 
