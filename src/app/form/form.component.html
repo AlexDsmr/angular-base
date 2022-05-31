@@ -1,4 +1,5 @@
 <div class="container">
+    <h1><strong>Hero anquete</strong></h1>
     <form
         class="form-group"
         [formGroup]="profileForm"
@@ -8,7 +9,7 @@
         <input id="name" type="text" formControlName="name" autocomplete="off" >
 
         <label for="alias">Alias: </label>
-        <input id="alias" style="border: 1px solid rgb(102, 102, 102)" type="text"  autocomplete="off" formControlName="alias">
+        <input id="alias" [class.notRequire]="true" type="text"  autocomplete="off" formControlName="alias">
 
         <label for="location">Location: </label>
         <select autocomplete="off" formControlName="location">
@@ -16,17 +17,20 @@
             <option *ngFor="let location of locations" [value]="location" >{{ location }}</option>
         </select>
 
-        <label for="equipment">Base equipment: </label>
-        <p id="equipment">{{ profileForm.get('equipment')?.value }}</p>
+        <div *ngIf="this.profileForm.get('location')?.value">
+            <label for="equipment">Base equipment: </label>
+            <p id="equipment"><strong>{{ profileForm.get('equipment')?.value }}</strong></p>
+        </div>
 
         <label for="superPower">Super power: </label>
         <input list="superPower" type="text" autocomplete="off" formControlName="superPower"/>
         <datalist id="superPower" > 
             <option *ngFor="let superPower of superPowers" [value]="superPower" >{{ superPower }}</option>
         </datalist>
+        <hr />
 
         <div class="form-group">
-            <h3>Contact</h3>
+            <h2>Contacts</h2>
             
             <label for="mail">Email: </label>
             <input
@@ -47,7 +51,7 @@
                 autocomplete="off"
                 [class.notRequire]="isReqPhone === false"
                 #phoneInput
-                (input)="phoneHandler()"
+                (input)="phoneHandler(phoneInput.value)"
                 >
 
         </div>

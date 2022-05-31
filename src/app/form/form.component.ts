@@ -43,8 +43,8 @@ isReqPhone = true
 
 
 
-phoneHandler(){
-  if(!this.profileForm.get('mail')?.value && this.profileForm.get('phone')?.value) {
+phoneHandler(value: any){  
+  if(this.profileForm.get('mail')?.value === '' && this.profileForm.get('phone')?.value === '') {
     this.isReqMail = true
     this.isReqPhone = true
   }  
@@ -72,7 +72,7 @@ phoneHandler(){
 }
 
 mailHandler(){
-  if(!this.profileForm.get('mail')?.value && this.profileForm.get('phone')?.value) {
+  if(this.profileForm.get('mail')?.value === '' && this.profileForm.get('phone')?.value === '') {
     this.isReqMail = true
     this.isReqPhone = true
   }  
@@ -100,12 +100,12 @@ mailHandler(){
 
 profileForm = this.fb.group({
   name: ['', Validators.required], 
-  alias: [null],
+  alias: [''],
   location: ['', Validators.required],
   equipment: [''],
   superPower: ['', Validators.required],
-  mail: [null, [Validators.required, allowedNameValidator(/.+@.+\..+/i)]],
-  phone: [null, [Validators.required, allowedNameValidator(/^([+]?[0-9\s-\(\)]{3,25})*$/i)]]
+  mail: ['', [Validators.required, allowedNameValidator(/.+@.+\..+/i)]],
+  phone: ['', [Validators.required, allowedNameValidator(/^([+]?[0-9\s-\(\)]{3,25})*$/i)]]
 });
 
 
