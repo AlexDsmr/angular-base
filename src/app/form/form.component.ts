@@ -43,32 +43,35 @@ isReqMail = true
 isReqPhone = true
 
 phoneHandler(){
-  if (this.profileForm.get('mail')?.status !== "VALID" && !this.profileForm.get('phone')?.value) {
-    this.profileForm.get('phone')?.setValidators([Validators.required, allowedNameValidator(/^([+]?[0-9\s-\(\)]{3,25})*$/i)])
-    this.profileForm.get('mail')?.updateValueAndValidity()
-    this.profileForm.get('phone')?.updateValueAndValidity()
-  }
+  this.profileForm.get('phone')?.value?
+    this.profileForm.get('phone')?.setValidators([Validators.required, allowedNameValidator(/^([+]?[0-9\s-\(\)]{3,25})*$/i)]):undefined
+  
   this.profileForm.get('phone')?.status === "VALID"?
     this.profileForm.get('mail')?.clearValidators():
-    this.profileForm.get('mail')?.setValidators([Validators.required, allowedNameValidator(/^([+]?[0-9\s-\(\)]{3,25})*$/i)])
+    this.profileForm.get('mail')?.setValidators([Validators.required, allowedNameValidator(/.+@.+\..+/i)])
+
+    if(this.profileForm.get('mail')?.status === "VALID" && !this.profileForm.get('phone')?.value) {
+      this.profileForm.get('phone')?.clearValidators()
+    }
+
   this.profileForm.get('mail')?.updateValueAndValidity()
   this.profileForm.get('phone')?.updateValueAndValidity()
-    
 }
 
-mailHandler(){
-  if (this.profileForm.get('phone')?.status !== "VALID" && !this.profileForm.get('mail')?.value) {
-    this.profileForm.get('mail')?.setValidators([Validators.required, allowedNameValidator(/^([+]?[0-9\s-\(\)]{3,25})*$/i)])
+mailHandler(){  
+  this.profileForm.get('mail')?.value?
+    this.profileForm.get('mail')?.setValidators([Validators.required, allowedNameValidator(/.+@.+\..+/i)]):undefined
+  
+    this.profileForm.get('mail')?.status === "VALID"?
+      this.profileForm.get('phone')?.clearValidators():
+      this.profileForm.get('phone')?.setValidators([Validators.required, allowedNameValidator(/^([+]?[0-9\s-\(\)]{3,25})*$/i)])
+    
+    if(this.profileForm.get('phone')?.status === "VALID" && !this.profileForm.get('mail')?.value) {
+      this.profileForm.get('mail')?.clearValidators()
+    }
+
     this.profileForm.get('mail')?.updateValueAndValidity()
     this.profileForm.get('phone')?.updateValueAndValidity()
-  }
-
-  this.profileForm.get('mail')?.status === "VALID"?
-    this.profileForm.get('phone')?.clearValidators():
-    this.profileForm.get('phone')?.setValidators([Validators.required, allowedNameValidator(/^([+]?[0-9\s-\(\)]{3,25})*$/i)])
-  this.profileForm.get('mail')?.updateValueAndValidity()
-  this.profileForm.get('phone')?.updateValueAndValidity()
-  
 }
 
 profileForm = this.fb.group({
