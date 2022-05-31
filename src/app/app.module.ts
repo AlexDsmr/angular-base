@@ -18,6 +18,7 @@ import { MomentPipe } from './shared/moment.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeroTableComponent } from './hero-table/hero-table.component';
 
 registerLocaleData(localeRu, 'ru')
 
@@ -32,7 +33,8 @@ registerLocaleData(localeRu, 'ru')
     OrganizerComponent,
     DiaryMainComponent,
     MomentPipe,
-    NavBarComponent
+    NavBarComponent,
+    HeroTableComponent
   ],
   imports: [
     BrowserModule,
