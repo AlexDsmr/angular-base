@@ -5,6 +5,7 @@ import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import { RouterModule } from '@angular/router';
 import { MatSliderModule } from '@angular/material/slider';
+import {MatSortModule} from '@angular/material/sort';
 
 import { AppComponent } from './app.component';
 import { CardComponent } from './cards-block/card/card.component';
@@ -19,6 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeroTableComponent } from './hero-table/hero-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 registerLocaleData(localeRu, 'ru')
 
@@ -45,9 +48,13 @@ registerLocaleData(localeRu, 'ru')
     RouterModule.forRoot([
       {path: 'cards', component: CardListComponent},
       {path: 'form', component: FormComponent},
-      {path: 'diary', component: DiaryMainComponent}
+      {path: 'diary', component: DiaryMainComponent},
+      {path: 'heroTable', component: HeroTableComponent}
     ]),
     BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
