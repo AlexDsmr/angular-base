@@ -21,18 +21,18 @@ export class HeroTableAdmComponent implements OnInit {
 
   ngOnInit(): void { 
 
-    
   this.heroService.load()
   .subscribe(heroes => {
     this.heroes = heroes
   })
 
-  
-
-  
-
-  
-
   }
+
+  remove(hero: Hero) {
+    this.heroService.remove(hero).subscribe(() => {
+      this.heroes = this.heroes.filter(h => h.id !== hero.id)
+    }, err => console.error(err))
+  }
+
 
 }

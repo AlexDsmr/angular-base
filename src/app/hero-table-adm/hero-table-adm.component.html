@@ -15,14 +15,15 @@
     
         <tbody>
             <tr *ngFor="let hero of heroes">
-                <td><span>{{ hero.id }}</span></td>
-                <td><span>{{ hero.name }}</span></td>
-                <td><span>{{ hero.alias }}</span></td>
-                <td><span>{{ hero.location }}</span></td>
-                <td><span>{{ hero.equipment }}</span></td>
-                <td><span>{{ hero.superPower }}</span></td>
-                <td><span>{{ hero.mail }}</span></td>
-                <td><span>{{ hero.phone }}</span></td>
+                <td><span >{{ hero.id }}</span></td>
+                <td><span >{{ hero.name }}</span></td>
+                <td><span >{{ hero.alias }}</span></td>
+                <td><span >{{ hero.location }}</span></td>
+                <td><span >{{ hero.equipment }}</span></td>
+                <td><span >{{ hero.superPower }}</span></td>
+                <td><span >{{ hero.mail }}</span></td>
+                <td><span >{{ hero.phone }}</span></td>
+                <th style="border: none;"><button (click)="remove(hero)" class="btn"> Delete</button></th>
             </tr>
         </tbody>
     </table>

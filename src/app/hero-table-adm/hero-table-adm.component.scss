@@ -7,6 +7,23 @@
     }
 }
 
+.btn {
+    
+    background: var(--light-color);
+    padding: .4rem 0.5rem;
+    font-size: 0.6rem;
+    border: none;
+    cursor: pointer;
+    
+    transition: opacity .2s;
+    box-shadow: 1px 1px 3px gray;
+
+    &:hover:not(:disabled) {
+        opacity: .8;
+    }
+    
+}
+
 table {
     font-size: 0.6rem;
     width: 100%;
@@ -23,6 +40,7 @@ table {
     }
 
     td {
+        
         text-align: center;
         transition:  all .2s;
 
@@ -34,6 +52,8 @@ table {
             background: #eee;
             cursor: pointer
         }
+       
+
     }
 
     .active {
