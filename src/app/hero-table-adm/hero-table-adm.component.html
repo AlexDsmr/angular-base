@@ -1,27 +1,29 @@
-<table>
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Alias</th>
-            <th>Location</th>
-            <th>Equipment</th>
-            <th>SuperPower</th>
-            <th>Email</th>
-            <th>Phone</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        <tr *ngFor="let hero of heroes">
-            <th><span>{{ hero.id }}</span></th>
-            <th><span>{{ hero.name }}</span></th>
-            <th><span>{{ hero.alias }}</span></th>
-            <th><span>{{ hero.location }}</span></th>
-            <th><span>{{ hero.equipment }}</span></th>
-            <th><span>{{ hero.superPower }}</span></th>
-            <th><span>{{ hero.mail }}</span></th>
-            <th><span>{{ hero.phone }}</span></th>
-        </tr>
-    </tbody>
-</table>
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Alias</th>
+                <th>Location</th>
+                <th>Equipment</th>
+                <th>SuperPower</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <tr *ngFor="let hero of heroes">
+                <td><span>{{ hero.id }}</span></td>
+                <td><span>{{ hero.name }}</span></td>
+                <td><span>{{ hero.alias }}</span></td>
+                <td><span>{{ hero.location }}</span></td>
+                <td><span>{{ hero.equipment }}</span></td>
+                <td><span>{{ hero.superPower }}</span></td>
+                <td><span>{{ hero.mail }}</span></td>
+                <td><span>{{ hero.phone }}</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
