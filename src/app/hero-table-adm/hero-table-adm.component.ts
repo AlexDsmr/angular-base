@@ -62,8 +62,6 @@ export class HeroTableAdmComponent implements OnInit {
       this.editId = ''
       this.editValue = ''
     }, err => console.error(err))
-
-
   }
 
 }
