@@ -1,6 +1,6 @@
 <div class="container">
     <table>
-        <thead>
+        <thead (click)="editCell('', '', '', $event)">
             <tr>
                 <th>Id</th>
                 <th>Name</th>
@@ -15,14 +15,30 @@
     
         <tbody>
             <tr *ngFor="let hero of heroes">
-                <td><span >{{ hero.id }}</span></td>
-                <td><span >{{ hero.name }}</span></td>
-                <td><span >{{ hero.alias }}</span></td>
-                <td><span >{{ hero.location }}</span></td>
-                <td><span >{{ hero.equipment }}</span></td>
-                <td><span >{{ hero.superPower }}</span></td>
-                <td><span >{{ hero.mail }}</span></td>
-                <td><span >{{ hero.phone }}</span></td>
+                <td class="disabled" (click)="editCell('', '', '', $event)"><span >{{ hero.id }}</span></td>
+                <td (click)="editCell(hero.id, hero.name, 'name', $event)">
+                    <span 
+                        *ngIf="!ifEdit(hero.id, 'name'); else noCellEdit"
+                    >{{ hero.name }}</span>
+                    <ng-template #noCellEdit>
+                        <form (ngSubmit)="editCellConfirm(hero, 'name', currInp.value)">
+                        <input #currInp>
+                        </form>
+                    </ng-template>
+                </td>
+                <td (click)="editCell(hero.id, hero.alias, 'alias', $event)">
+                    <span 
+                    *ngIf="!ifEdit(hero.id, 'alias'); else noCellEdit"
+                    >{{ hero.alias }}</span>
+                    <ng-template #noCellEdit>
+                        <input>
+                    </ng-template>
+                </td>
+                <td (click)="editCell(hero.id, hero.location, 'location', $event)"><span >{{ hero.location }}</span></td>
+                <td (click)="editCell(hero.id, hero.equipment, 'equipment', $event)"><span >{{ hero.equipment }}</span></td>
+                <td (click)="editCell(hero.id, hero.superPower, 'superPower', $event)"><span >{{ hero.superPower }}</span></td>
+                <td (click)="editCell(hero.id, hero.mail, 'mail', $event)"><span >{{ hero.mail }}</span></td>
+                <td (click)="editCell(hero.id, hero.phone, 'phone', $event)"><span >{{ hero.phone }}</span></td>
                 <th style="border: none;"><button (click)="remove(hero)" class="btn"> Delete</button></th>
             </tr>
         </tbody>

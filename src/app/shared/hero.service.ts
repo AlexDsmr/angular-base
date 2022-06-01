@@ -40,10 +40,14 @@ export class HeroService {
             }))
     }
 
-    edit(hero: Hero, key: any, value: any): Observable<Response> {
+    edit(hero: Hero): Observable<Hero> {
         return this.http
-          .patch<Response>(`${HeroService.url}/${hero.id}.json`, value)
+          .put<Hero>(`${HeroService.url}/${hero.id}.json`, hero)
+          .pipe(map(res => {
+          return res
+        }))
       }
+
 
 
     create(hero: Hero): Observable<Hero> {

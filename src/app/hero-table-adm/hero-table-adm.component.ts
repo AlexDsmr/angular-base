@@ -16,6 +16,10 @@ export class HeroTableAdmComponent implements OnInit {
   //{id: '6', name: 'T\'Challa', date: '31-05-2022', alias: 'Black Panther', location: 'Wakanda', equipment: 'Wood Stick', superPower: 'Agility', mail: '', phone: '2326532'}]
 
   heroes: Hero[] = []
+  isCellEdit = false
+  editId = ''
+  editValue = ''
+  editType = ''
 
   constructor(private heroService: HeroService) { }
 
@@ -36,5 +40,30 @@ export class HeroTableAdmComponent implements OnInit {
     }
   }
 
+  editCell(id: any, value:any, type:string, e: Event){
+    //e.stopPropagation
+    this.editType = type
+    this.editId = id
+    this.editValue = value
+    //this.isCellEdit?this.isCellEdit=false:this.isCellEdit=true
+    //this.isCellEdit = true
+    //console.log(id,name);
+    
+  }
+
+  ifEdit(id: any, type: any) {
+    return (id === this.editId && type === this.editType)?true:false
+  }
+
+  editCellConfirm(hero: Hero, key: string, value: any) {
+    hero[key] = value
+    this.heroService.edit(hero).subscribe(hero => {
+      this.editType = ''
+      this.editId = ''
+      this.editValue = ''
+    }, err => console.error(err))
+
+
+  }
 
 }
