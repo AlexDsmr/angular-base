@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
@@ -13,12 +13,13 @@ export class HeroTableComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<HeroTableItem>;
-  dataSource: HeroTableDataSource;
+  dataSource: HeroTableDataSource
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['id', 'name', 'date', 'alias', 'location', 'equipment', 'superPower'];
-
+  
   constructor() {
+    
     this.dataSource = new HeroTableDataSource();
   }
 
