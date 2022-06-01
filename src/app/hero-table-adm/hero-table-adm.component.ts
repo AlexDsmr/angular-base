@@ -29,9 +29,11 @@ export class HeroTableAdmComponent implements OnInit {
   }
 
   remove(hero: Hero) {
-    this.heroService.remove(hero).subscribe(() => {
-      this.heroes = this.heroes.filter(h => h.id !== hero.id)
-    }, err => console.error(err))
+    if(confirm(`Do you realy want to delete \"${hero.name}\" hero?`)) {
+      this.heroService.remove(hero).subscribe(() => {
+        this.heroes = this.heroes.filter(h => h.id !== hero.id)
+      }, err => console.error(err))
+    }
   }
 
 
