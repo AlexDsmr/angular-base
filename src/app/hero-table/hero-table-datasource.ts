@@ -8,10 +8,10 @@ import { HttpClient } from "@angular/common/http";
 
 // TODO: Replace this with your own data model type
 export interface HeroTableItem {
-  id: string
+  id: number
   name: string
   date?: string
-  alias?: string
+  alias: string
   location: string
   equipment: string
   superPower: string
@@ -22,13 +22,12 @@ export interface HeroTableItem {
 //const dataTest: Hero[] = []
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: HeroTableItem[] = [
-  {id: '32', name: 'Steve Rogers', date: '31-05-2022', alias: 'Captain America', location: 'America', equipment: 'Gamburger', superPower: 'Strength', mail: '', phone: '911'},
-  {id: '123', name: 'Steve Rogers', date: '31-05-2022', alias: 'Captain America', location: 'Russia', equipment: 'Gamburger', superPower: 'Strength', mail: '', phone: '911'},
-  {id: '12', name: 'Steve Rogers', date: '31-05-2022', alias: 'Captain America', location: 'Europe', equipment: 'Gamburger', superPower: 'Strength', mail: '', phone: '911'},
-  {id: '1q', name: 'Steve Rogers', date: '31-05-2022', alias: 'Captain America', location: 'Africa', equipment: 'Gamburger', superPower: 'Strength', mail: '', phone: '911'},
-  {id: 'wfw', name: 'Steve Rogers', date: '31-05-2022', alias: 'Captain America', location: 'Syberia', equipment: 'Gamburger', superPower: 'Strength', mail: '', phone: '911'},
-  {id: 'wvw', name: 'Steve Rogers', date: '31-05-2022', alias: 'Captain America', location: 'Kongo', equipment: 'Gamburger', superPower: 'Strength', mail: '', phone: '911'},
-  {id: 'ehjk', name: 'Steve Rogers', date: '31-05-2022', alias: 'Captain America', location: 'Space', equipment: 'Gamburger', superPower: 'Strength', mail: '', phone: '911'}
+  {id: 1, name: 'Steve Rogers', date: '31-05-2022', alias: 'Captain America', location: 'America', equipment: 'Gamburger', superPower: 'Strength', mail: '', phone: '911'},
+  {id: 2, name: 'Groot', date: '31-05-2022', alias: 'Groot', location: 'Space', equipment: 'No equipment', superPower: 'regenerative healing factor', mail: '', phone: '112'},
+  {id: 3, name: 'Black Widow', date: '31-05-2022', alias: 'Black Widow', location: 'Russia', equipment: 'Bottle of vodka', superPower: 'Master spy & assassin', mail: '', phone: '03305'},
+  {id: 4, name: 'Peter Quill', date: '31-05-2022', alias: 'Star-Lord', location: 'America', equipment: 'Gamburger', superPower: 'Master problem-solver', mail: 'star-lord@gmail.com', phone: '911'},
+  {id: 5, name: 'Logan', date: '31-05-2022', alias: 'Wolverine', location: 'Syberia', equipment: 'Gamburger', superPower: 'regeneration', mail: 'logan@mail.ru', phone: '25223'},
+  {id: 6, name: 'T\'Challa', date: '31-05-2022', alias: 'Black Panther', location: 'Wakanda', equipment: 'Wood Stick', superPower: 'Agility', mail: '', phone: '2326532'}
 ];
 
 /**
@@ -38,27 +37,12 @@ const EXAMPLE_DATA: HeroTableItem[] = [
  */
 export class HeroTableDataSource extends DataSource<HeroTableItem> {
   data: HeroTableItem[] = EXAMPLE_DATA;
-  //data2: Hero[] = dataTest;
-  
-  static url = 'https://angular-practice-diary-default-rtdb.europe-west1.firebasedatabase.app/heroes'
-
-  load(): Observable<HeroTableItem[]> {
-    return this.http
-        .get<HeroTableItem[]> ( `${HeroTableDataSource.url}.json`)
-        .pipe(map(heroes => {
-            if (!heroes) {
-                return []
-            }
-            return Object.keys(heroes).map((key: any) => ({...heroes[key], id: key}))
-        }))
-  }
-
-  
+    
 
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
-  constructor(private http: HttpClient) {
+  constructor() {
     super();
      
   }
@@ -116,7 +100,8 @@ export class HeroTableDataSource extends DataSource<HeroTableItem> {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
         case 'name': return compare(a.name, b.name, isAsc);
-        case 'id': return compare(a.id, b.id, isAsc);
+        case 'alias': return compare(a.alias, b.alias, isAsc);
+        case 'id': return compare(+a.id, +b.id, isAsc);
         case 'location': return compare(a.location, b.location, isAsc);
         case 'equipment': return compare(a.equipment, b.equipment, isAsc);
         case 'superPower': return compare(a.superPower, b.superPower, isAsc);

@@ -16,7 +16,7 @@ export class HeroTableComponent implements AfterViewInit {
   dataSource: HeroTableDataSource
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['id', 'name', 'date', 'alias', 'location', 'equipment', 'superPower'];
+  displayedColumns = ['id', 'name', 'alias', 'location', 'superPower'];
   
   constructor() {
     
