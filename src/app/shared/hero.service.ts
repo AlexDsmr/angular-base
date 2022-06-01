@@ -5,6 +5,8 @@ import { Observable } from "rxjs";
 import * as moment from "moment";
 
 export interface Hero {
+    [key: string]: string | undefined
+
     id?: string
     name: string
     date?: string
@@ -37,6 +39,12 @@ export class HeroService {
                 return Object.keys(heroes).map((key: any) => ({...heroes[key], id: key}))
             }))
     }
+
+    edit(hero: Hero, key: any, value: any): Observable<Response> {
+        return this.http
+          .patch<Response>(`${HeroService.url}/${hero.id}.json`, value)
+      }
+
 
     create(hero: Hero): Observable<Hero> {
         return this.http
