@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeroTableComponent } from './hero-table/hero-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { HeroTableAdmComponent } from './hero-table-adm/hero-table-adm.component';
 
 registerLocaleData(localeRu, 'ru')
 
@@ -37,7 +38,8 @@ registerLocaleData(localeRu, 'ru')
     DiaryMainComponent,
     MomentPipe,
     NavBarComponent,
-    HeroTableComponent
+    HeroTableComponent,
+    HeroTableAdmComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ registerLocaleData(localeRu, 'ru')
       {path: 'cards', component: CardListComponent},
       {path: 'form', component: FormComponent},
       {path: 'diary', component: DiaryMainComponent},
-      {path: 'heroTable', component: HeroTableComponent}
+      {path: 'heroTable', component: HeroTableComponent},
+      {path: 'heroTable/Adm', component: HeroTableAdmComponent}
     ]),
     BrowserAnimationsModule,
     MatTableModule,

@@ -1,0 +1,27 @@
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Alias</th>
+            <th>Location</th>
+            <th>Equipment</th>
+            <th>SuperPower</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let hero of heroes">
+            <th><span>{{ hero.id }}</span></th>
+            <th><span>{{ hero.name }}</span></th>
+            <th><span>{{ hero.alias }}</span></th>
+            <th><span>{{ hero.location }}</span></th>
+            <th><span>{{ hero.equipment }}</span></th>
+            <th><span>{{ hero.superPower }}</span></th>
+            <th><span>{{ hero.mail }}</span></th>
+            <th><span>{{ hero.phone }}</span></th>
+        </tr>
+    </tbody>
+</table>
