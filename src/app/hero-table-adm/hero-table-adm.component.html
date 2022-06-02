@@ -1,6 +1,7 @@
 <div class="container">
     <div>
-        <input type="text" #myInput (input)="inputHandler(myInput.value)" [value]="searchQuery">
+        <label for="search"><strong>Search: </strong></label>
+        <input id="search" class="inLabel" type="text" #myInput (input)="inputHandler(myInput.value)" [value]="searchQuery">
     </div>
     <table>
         <thead (click)="editCell('', '', '', $event)">

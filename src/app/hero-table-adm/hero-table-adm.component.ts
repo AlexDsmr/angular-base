@@ -63,20 +63,15 @@ export class HeroTableAdmComponent implements OnInit {
   remove(hero: Hero) {
     if(confirm(`Do you realy want to delete \"${hero.name}\" hero?`)) {
       this.heroService.remove(hero).subscribe(() => {
-        this.heroes = this.heroes.filter(h => h.id !== hero.id)
+        this.heroesSearch = this.heroesSearch.filter(h => h.id !== hero.id)
       }, err => console.error(err))
     }
   }
 
   editCell(id: any, value:any, type:string, e: Event){
-    //e.stopPropagation
     this.editType = type
     this.editId = id
     this.editValue = value
-    //this.isCellEdit?this.isCellEdit=false:this.isCellEdit=true
-    //this.isCellEdit = true
-    //console.log(id,name);
-    
   }
 
   ifEdit(id: any, type: any) {
