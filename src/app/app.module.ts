@@ -5,6 +5,7 @@ import { registerLocaleData } from '@angular/common';
 import localeRu from '@angular/common/locales/ru';
 import { RouterModule } from '@angular/router';
 import { MatSliderModule } from '@angular/material/slider';
+import {MatSortModule} from '@angular/material/sort';
 
 import { AppComponent } from './app.component';
 import { CardComponent } from './cards-block/card/card.component';
@@ -18,6 +19,10 @@ import { MomentPipe } from './shared/moment.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HeroTableComponent } from './hero-table/hero-table.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { HeroTableAdmComponent } from './hero-table-adm/hero-table-adm.component';
 
 registerLocaleData(localeRu, 'ru')
 
@@ -32,7 +37,9 @@ registerLocaleData(localeRu, 'ru')
     OrganizerComponent,
     DiaryMainComponent,
     MomentPipe,
-    NavBarComponent
+    NavBarComponent,
+    HeroTableComponent,
+    HeroTableAdmComponent
   ],
   imports: [
     BrowserModule,
@@ -43,9 +50,14 @@ registerLocaleData(localeRu, 'ru')
     RouterModule.forRoot([
       {path: 'cards', component: CardListComponent},
       {path: 'form', component: FormComponent},
-      {path: 'diary', component: DiaryMainComponent}
+      {path: 'diary', component: DiaryMainComponent},
+      {path: 'heroTable', component: HeroTableComponent},
+      {path: 'heroTable/Adm', component: HeroTableAdmComponent}
     ]),
     BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

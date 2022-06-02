@@ -5,6 +5,8 @@ import { Observable } from "rxjs";
 import * as moment from "moment";
 
 export interface Hero {
+    [key: string]: string | undefined
+
     id?: string
     name: string
     date?: string
@@ -27,16 +29,26 @@ export class HeroService {
     constructor(private http: HttpClient) {
     }
 
-    //load(date: moment.Moment): Observable<Task[]> {
-    //    return this.http
-    //        .get<Task[]> ( `${TasksService.url}/${date.format('DD-MM-YYYY')}.json`)
-    //        .pipe(map(tasks => {
-    //            if (!tasks) {
-    //                return []
-    //            }
-    //            return Object.keys(tasks).map((key: any) => ({...tasks[key], id: key}))
-    //        }))
-    //}
+    load(): Observable<Hero[]> {
+        return this.http
+            .get<Hero[]> ( `${HeroService.url}.json`)
+            .pipe(map(heroes => {
+                if (!heroes) {
+                    return []
+                }
+                return Object.keys(heroes).map((key: any) => ({...heroes[key], id: key}))
+            }))
+    }
+
+    edit(hero: Hero): Observable<Hero> {
+        return this.http
+          .put<Hero>(`${HeroService.url}/${hero.id}.json`, hero)
+          .pipe(map(res => {
+          return res
+        }))
+      }
+
+
 
     create(hero: Hero): Observable<Hero> {
         return this.http

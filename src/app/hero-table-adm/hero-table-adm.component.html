@@ -1,0 +1,97 @@
+<div class="container">
+    <div>
+        <label for="search"><strong>Search: </strong></label>
+        <input id="search" class="inLabel" type="text" #myInput (input)="inputHandler(myInput.value)" [value]="searchQuery">
+    </div>
+    <table>
+        <thead (click)="editCell('', '', '', $event)">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Alias</th>
+                <th>Location</th>
+                <th>Equipment</th>
+                <th>SuperPower</th>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+        </thead>
+    
+        <tbody>
+            <tr *ngFor="let hero of heroesSearch">
+                <td class="disabled" (click)="editCell('', '', '', $event)"><span >{{ hero.id }}</span></td>
+                <td (click)="editCell(hero.id, hero.name, 'name', $event)">
+                    <span 
+                        *ngIf="!ifEdit(hero.id, 'name'); else cellEditName"
+                    >{{ hero.name }}</span>
+                    <ng-template #cellEditName>
+                        <form (ngSubmit)="editCellConfirm(hero, 'name', currInp.value)">
+                        <input #currInp>
+                        </form>
+                    </ng-template>
+                </td>
+                <td (click)="editCell(hero.id, hero.alias, 'alias', $event)">
+                    <span 
+                    *ngIf="!ifEdit(hero.id, 'alias'); else cellEditAlias"
+                    >{{ hero.alias }}</span>
+                    <ng-template #cellEditAlias>
+                        <form (ngSubmit)="editCellConfirm(hero, 'alias', currInp.value)">
+                            <input #currInp>
+                        </form>
+                    </ng-template>
+                </td>
+                <td (click)="editCell(hero.id, hero.location, 'location', $event)">
+                    <span 
+                    *ngIf="!ifEdit(hero.id, 'location'); else cellEditLocation"
+                    >{{ hero.location }}</span>
+                    <ng-template #cellEditLocation>
+                        <form (ngSubmit)="editCellConfirm(hero, 'location', currInp.value)">
+                            <input #currInp>
+                        </form>
+                    </ng-template>
+                </td>
+                <td (click)="editCell(hero.id, hero.equipment, 'equipment', $event)">
+                    <span 
+                    *ngIf="!ifEdit(hero.id, 'equipment'); else cellEditEquipment"
+                    >{{ hero.equipment }}</span>
+                    <ng-template #cellEditEquipment>
+                        <form (ngSubmit)="editCellConfirm(hero, 'equipment', currInp.value)">
+                            <input #currInp>
+                        </form>
+                    </ng-template>
+                </td>
+                <td (click)="editCell(hero.id, hero.superPower, 'superPower', $event)">
+                    <span 
+                    *ngIf="!ifEdit(hero.id, 'superPower'); else cellEditSuperPower"
+                    >{{ hero.superPower }}</span>
+                    <ng-template #cellEditSuperPower>
+                        <form (ngSubmit)="editCellConfirm(hero, 'superPower', currInp.value)">
+                            <input #currInp>
+                        </form>
+                    </ng-template>
+                </td>
+                <td (click)="editCell(hero.id, hero.mail, 'mail', $event)">
+                    <span 
+                    *ngIf="!ifEdit(hero.id, 'mail'); else cellEditMail"
+                    >{{ hero.mail }}</span>
+                    <ng-template #cellEditMail>
+                        <form (ngSubmit)="editCellConfirm(hero, 'mail', currInp.value)">
+                            <input #currInp>
+                        </form>
+                    </ng-template>
+                </td>
+                <td (click)="editCell(hero.id, hero.phone, 'phone', $event)">
+                    <span 
+                    *ngIf="!ifEdit(hero.id, 'phone'); else cellEditPhone"
+                    >{{ hero.phone }}</span>
+                    <ng-template #cellEditPhone>
+                        <form (ngSubmit)="editCellConfirm(hero, 'phone', currInp.value)">
+                            <input #currInp>
+                        </form>
+                    </ng-template>
+                </td>
+                <th style="border: none;"><button (click)="remove(hero)" class="btn"> Delete</button></th>
+            </tr>
+        </tbody>
+    </table>
+</div>
