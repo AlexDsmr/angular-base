@@ -1,4 +1,7 @@
 <div class="container">
+    <div>
+        <input type="text" #myInput (input)="inputHandler(myInput.value)" [value]="searchQuery">
+    </div>
     <table>
         <thead (click)="editCell('', '', '', $event)">
             <tr>
@@ -14,7 +17,7 @@
         </thead>
     
         <tbody>
-            <tr *ngFor="let hero of heroes">
+            <tr *ngFor="let hero of heroesSearch">
                 <td class="disabled" (click)="editCell('', '', '', $event)"><span >{{ hero.id }}</span></td>
                 <td (click)="editCell(hero.id, hero.name, 'name', $event)">
                     <span 

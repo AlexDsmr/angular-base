@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero, HeroService } from 'src/app/shared/hero.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { observable } from 'rxjs';
 
 @Component({
   selector: 'app-hero-table-adm',
@@ -17,11 +18,13 @@ export class HeroTableAdmComponent implements OnInit {
   //{id: '6', name: 'T\'Challa', date: '31-05-2022', alias: 'Black Panther', location: 'Wakanda', equipment: 'Wood Stick', superPower: 'Agility', mail: '', phone: '2326532'}]
 
   heroes: Hero[] = []
+  heroesSearch: Hero[] = []
   isCellEdit = false
   editId = ''
   editValue = ''
   editType = ''
   form!: FormGroup;
+  searchQuery = ''
 
   constructor(private heroService: HeroService) { }
 
@@ -29,10 +32,17 @@ export class HeroTableAdmComponent implements OnInit {
 
   this.heroService.load()
   .subscribe(heroes => {
-    this.heroes = heroes
+    this.heroes = heroes,
+    this.heroesSearch = heroes
   })
 
+
   }
+
+  inputHandler(value: any) {
+    this.heroesSearch = [...this.heroes].filter(hero => hero.name.toLowerCase()?.includes(value.toLowerCase()))
+    return 
+}
 
   remove(hero: Hero) {
     if(confirm(`Do you realy want to delete \"${hero.name}\" hero?`)) {
