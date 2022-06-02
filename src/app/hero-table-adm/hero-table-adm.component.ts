@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero, HeroService } from 'src/app/shared/hero.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-hero-table-adm',
@@ -20,6 +21,7 @@ export class HeroTableAdmComponent implements OnInit {
   editId = ''
   editValue = ''
   editType = ''
+  form!: FormGroup;
 
   constructor(private heroService: HeroService) { }
 
@@ -55,6 +57,8 @@ export class HeroTableAdmComponent implements OnInit {
     return (id === this.editId && type === this.editType)?true:false
   }
 
+  
+
   editCellConfirm(hero: Hero, key: string, value: any) {
     hero[key] = value
     this.heroService.edit(hero).subscribe(hero => {
@@ -63,5 +67,6 @@ export class HeroTableAdmComponent implements OnInit {
       this.editValue = ''
     }, err => console.error(err))
   }
+
 
 }
