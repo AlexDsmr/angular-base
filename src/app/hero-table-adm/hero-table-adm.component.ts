@@ -25,6 +25,7 @@ export class HeroTableAdmComponent implements OnInit {
   editType = ''
   form!: FormGroup;
   searchQuery = ''
+  searchBy = ['name', 'alias', 'location', 'equipment', 'superPower', 'mail', 'phone']
 
   constructor(private heroService: HeroService) { }
 
@@ -39,9 +40,24 @@ export class HeroTableAdmComponent implements OnInit {
 
   }
 
-  inputHandler(value: any) {
+  inputHandlerName(value: any) {
     this.heroesSearch = [...this.heroes].filter(hero => hero.name.toLowerCase()?.includes(value.toLowerCase()))
+    console.log([this.heroes], '////')
     return 
+  }
+
+  inputHandler(value: any) {
+    this.heroesSearch = [...this.heroes].filter(hero => {
+      for(let i = 0; i<this.searchBy.length; i++) {
+        if(hero[this.searchBy[i]]?.toString().toLowerCase()?.includes(value.toString().toLowerCase())) {
+          console.log('true')
+          return true
+        }}
+      return false
+
+    })
+
+  return 
 }
 
   remove(hero: Hero) {
