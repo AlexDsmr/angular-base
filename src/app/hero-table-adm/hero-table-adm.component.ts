@@ -23,9 +23,10 @@ export class HeroTableAdmComponent implements OnInit {
   editId = ''
   editValue = ''
   editType = ''
-  form!: FormGroup;
+  form!: FormGroup
   searchQuery = ''
   searchBy = ['name', 'alias', 'location', 'equipment', 'superPower', 'mail', 'phone']
+  noMatches: boolean = false
 
   constructor(private heroService: HeroService) { }
 
@@ -50,13 +51,11 @@ export class HeroTableAdmComponent implements OnInit {
     this.heroesSearch = [...this.heroes].filter(hero => {
       for(let i = 0; i<this.searchBy.length; i++) {
         if(hero[this.searchBy[i]]?.toString().toLowerCase()?.includes(value.toString().toLowerCase())) {
-          console.log('true')
           return true
         }}
       return false
-
     })
-
+    this.noMatches = this.heroesSearch.length === 0?true:false
   return 
 }
 

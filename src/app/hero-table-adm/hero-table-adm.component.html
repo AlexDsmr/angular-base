@@ -3,7 +3,7 @@
         <label for="search"><strong>Search: </strong></label>
         <input id="search" class="inLabel" type="text" #myInput (input)="inputHandler(myInput.value)" [value]="searchQuery">
     </div>
-    <table>
+    <table *ngIf="!noMatches; else noMatchMessage">
         <thead (click)="editCell('', '', '', $event)">
             <tr>
                 <th>Id</th>
@@ -94,4 +94,5 @@
             </tr>
         </tbody>
     </table>
+    <ng-template #noMatchMessage><h2>No matches...</h2></ng-template>
 </div>
